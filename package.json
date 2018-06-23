@@ -1,69 +1,34 @@
 {
-  "devDependencies": {
-    "@alrra/travis-scripts": "^3.0.1",
-    "apache-server-configs": "^3.0.0",
-    "archiver": "^2.1.1",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
-    "del": "^3.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-recommended": "^2.0.0",
-    "eslint-plugin-mocha": "^5.0.0",
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-eslint": "^4.0.2",
-    "gulp-header": "^2.0.5",
-    "gulp-jscs": "^4.1.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.6.1",
-    "jquery": "3.3.1",
-    "mocha": "^5.1.1",
-    "modernizr": "3.6.0",
-    "normalize.css": "8.0.0",
-    "run-sequence": "^2.2.1",
-    "ssri": "^6.0.0",
-    "strip-json-comments": "^2.0.1",
-    "travis-after-all": "^1.4.5"
-  },
-  "engines": {
-    "node": ">=6",
-    "npm": ">=3"
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
-  "h5bp-configs": {
-    "directories": {
-      "archive": "archive",
-      "dist": "dist",
-      "src": "src",
-      "test": "test"
-    }
-  },
-  "homepage": "https://html5boilerplate.com/",
+  "name": "angular-seed",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS",
+  "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
-  "name": "html5-boilerplate",
-  "scripts": {
-    "build": "gulp build",
-    "test": "gulp archive && mocha --require babel-core/register --reporter spec --timeout 5000"
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-junit-reporter": "^0.4.1",
+    "protractor": "^4.0.9"
   },
-  "version": "6.1.0",
-  "description": "A professional front-end template for building fast, robust, and adaptable web apps or sites.",
-  "files": [
-    "CHANGELOG.md",
-    "LICENSE.txt",
-    "package.json",
-    "dist/",
-    "modernizr-config.json",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/h5bp/html5-boilerplate.git"
+  "scripts": {
+    "postinstall": "bower install",
+    "update-deps": "npm update",
+    "postupdate-deps": "bower update",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js",
+    "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
   }
 }
